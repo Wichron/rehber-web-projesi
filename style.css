@@ -1,28 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-<<<<<< quartz-dev
     font-weight:bolder; 
     background-color: #ffffff;
-=======
-    background-color: #f4f4f4;
->>>>>> main
     padding: 30px;
     text-align: center;
   }
   
   .container {
-<<<<<< quartz-dev
     background-color: rgba(3, 94, 74, 0.548);
     padding: 50px;
-
-    background-color: white;
-    padding: 20px;
->>>>>> main
     max-width: 600px;
     margin: auto;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     border-radius: 10px;
-<<<<<< quartz-dev
     border: 3px solid #000000;
   }
   
@@ -33,20 +23,11 @@ body {
     color: #01313a;
     border-radius: 10px;
     border: 3px solid #000000;
-
-  }
-  
-  input {
-    padding: 10px;
-    width: 60%;
-    margin-top: 10px;
->>>>>> main
   }
   
   button {
     padding: 10px 20px;
     margin-left: 10px;
-<<<<<< quartz-dev
     background-color: #03a3a8;
     color: #013942;
     border: none;
@@ -66,20 +47,3 @@ body {
   button:hover {
     background-color: #00f7ff3f;
   }
-
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  pre {
-    text-align: left;
-    margin-top: 20px;
-    background: #eee;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
->>>>>> main
