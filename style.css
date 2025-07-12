@@ -1,28 +1,72 @@
 body {
     font-family: Arial, sans-serif;
+<<<<<< quartz-dev
+    font-weight:bolder; 
+    background-color: #ffffff;
+=======
     background-color: #f4f4f4;
+>>>>>> main
     padding: 30px;
     text-align: center;
   }
   
   .container {
+<<<<<< quartz-dev
+    background-color: rgba(3, 94, 74, 0.548);
+    padding: 50px;
+
     background-color: white;
     padding: 20px;
+>>>>>> main
     max-width: 600px;
     margin: auto;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     border-radius: 10px;
+<<<<<< quartz-dev
+    border: 3px solid #000000;
+  }
+  
+  input {
+    padding: 13px;
+    width: 60%;
+    background-color:#a8f1f3 ;
+    color: #01313a;
+    border-radius: 10px;
+    border: 3px solid #000000;
+
   }
   
   input {
     padding: 10px;
     width: 60%;
     margin-top: 10px;
+>>>>>> main
   }
   
   button {
     padding: 10px 20px;
     margin-left: 10px;
+<<<<<< quartz-dev
+    background-color: #03a3a8;
+    color: #013942;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid #000000;
+  }
+  
+   #cevap {
+    text-align: left;
+    margin-top: 20px;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #00f7ff3f;
+  }
+
     background-color: #0077cc;
     color: white;
     border: none;
@@ -38,3 +82,4 @@ body {
     border-radius: 5px;
   }
   
+>>>>>> main
