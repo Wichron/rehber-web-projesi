@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   }
 
   const { prompt } = req.body;
-  console.log("Gelen prompt:", prompt);
+  console.log("🟡 Gelen prompt:", prompt);
 
   try {
     const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${process.env.GEMINI}`, {
@@ -16,18 +16,23 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-    console.log("Gemini yanıtı:", data);
+    console.log("🟢 Gemini yanıtı:", JSON.stringify(data, null, 2));
+
+    // Eğer API'den hata geldiyse
+    if (data.error) {
+      return res.status(500).json({ response: `❌ Gemini API Hatası: ${data.error.message}` });
+    }
 
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (!text) {
-      return res.status(200).json({ response: "Yanıt alınamadı." });
+      return res.status(200).json({ response: "⚠️ Yanıt alınamadı (boş içerik)." });
     }
 
     return res.status(200).json({ response: text });
 
   } catch (error) {
-    console.error("API hatası:", error);
-    return res.status(500).json({ error: "Sunucu hatası: Gemini'a ulaşamadık" });
+    console.error("🔥 API erişim hatası:", error);
+    return res.status(500).json({ response: "🚨 Sunucu hatası: Gemini'a ulaşamadık." });
   }
 }
