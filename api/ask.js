@@ -7,32 +7,31 @@ export default async function handler(req, res) {
   console.log("🟡 Gelen prompt:", prompt);
 
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${process.env.GEMINI}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.OPENAI_KEY}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }]
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: prompt }]
       })
     });
 
     const data = await response.json();
-    console.log("🟢 Gemini yanıtı:", JSON.stringify(data, null, 2));
+    console.log("🟢 OpenAI yanıtı:", JSON.stringify(data, null, 2));
 
-    // Eğer API'den hata geldiyse
-    if (data.error) {
-      return res.status(500).json({ response: `❌ Gemini API Hatası: ${data.error.message}` });
+    const answer = data?.choices?.[0]?.message?.content;
+
+    if (!answer) {
+      return res.status(200).json({ response: "Yanıt alınamadı." });
     }
 
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    return res.status(200).json({ response: answer });
 
-    if (!text) {
-      return res.status(200).json({ response: "⚠️ Yanıt alınamadı (boş içerik)." });
-    }
-
-    return res.status(200).json({ response: text });
-
-  } catch (error) {
-    console.error("🔥 API erişim hatası:", error);
-    return res.status(500).json({ response: "🚨 Sunucu hatası: Gemini'a ulaşamadık." });
+  } catch (err) {
+    console.error("❌ OpenAI API hatası:", err);
+    return res.status(500).json({ response: "Sunucu hatası: OpenAI'ye ulaşılamadı." });
   }
 }
