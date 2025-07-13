@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     cevapAlani.textContent = "Yapay zeka düşünüyor...";
-
+    
     try {
       const response = await fetch("/api/ask", {
         method: "POST",

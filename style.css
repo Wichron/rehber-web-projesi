@@ -1,49 +1,114 @@
 body {
     font-family: Arial, sans-serif;
     font-weight:bolder; 
-    background-color: #ffffff;
-    padding: 30px;
+    background-color: rgb(67, 70, 69);
+    padding: 220px;
     text-align: center;
+    
   }
   
-  .container {
-    background-color: rgba(3, 94, 74, 0.548);
-    padding: 50px;
-    max-width: 600px;
-    margin: auto;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    border: 3px solid #000000;
-  }
-  
+.box {
+  background-color: rgb(67, 70, 69);
+  padding: 100px; /* Daha fazla iç boşluk = daha büyük kutu */
+  max-width: 800px; /* Daha geniş sınır */
+  margin: auto;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 95% 90% at center,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 95% 90% at center,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+
+  transform: scale(1.2);
+  transform-origin: center;
+
+  color: white;
+  box-shadow: none;
+  text-align: center;
+}
+
+
+
+
   input {
     padding: 13px;
     width: 60%;
-    background-color:#a8f1f3 ;
-    color: #01313a;
+    background-color:antiquewhite ;
+    color: rgb(67, 70, 69);
     border-radius: 10px;
-    border: 3px solid #000000;
+    border: 3px solid rgb(0, 0, 0);
+    outline: none;
   }
   
   button {
     padding: 10px 20px;
     margin-left: 10px;
-    background-color: #03a3a8;
-    color: #013942;
+    background-color: antiquewhite;
+    color: rgb(67, 70, 69);
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    border: 3px solid #000000;
+    border: 3px solid rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: large;
   }
   
    #cevap {
     text-align: left;
     margin-top: 20px;
-    background: #ffffff;
+    background: antiquewhite;
     padding: 10px;
     border-radius: 5px;
+    color: rgb(67, 70, 69);
   }
   
   button:hover {
-    background-color: #00f7ff3f;
+    background-color: rgb(150, 135, 116);
   }
+  /* Arka plan videosu */
+#backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Blur efekti veren katman */
+#videoOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+  z-index: -1;
+}
+
+/* İçerik kutusu */
+.box {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5); /* Transparan siyah */
+  color: white;
+  padding: 20px;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
