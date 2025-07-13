@@ -1,13 +1,17 @@
-function sor() {
+async function sor() {
   const city = document.getElementById("cityInput").value;
-  const cevapElement = document.getElementById("cevap");
+  const cevapAlani = document.getElementById("cevap");
 
-  cevapElement.style.display = "block";
-  cevapElement.textContent = "Yükleniyor...";
+  cevapAlani.textContent = "Yapay zeka düşünüyor...";
 
-  // Sahte gecikme ve sahte cevap
-  setTimeout(() => {
-    const cevap = `${city} hakkında bilgi: Bu şehir Türkiye'nin güzel şehirlerinden biridir.`;
-    cevapElement.textContent = cevap;
-  }, 1500);
+  const response = await fetch("/api/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      prompt: `${city} hakkında kısa tarihi ve kültürel bilgiler ver.`
+    })
+  });
+
+  const data = await response.json();
+  cevapAlani.textContent = data.response;
 }
