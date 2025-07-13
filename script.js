@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const city = document.getElementById("cityInput").value.trim();
     const cevapAlani = document.getElementById("cevap");
 
-    if (!city) {
+    if (!city.trim()) {
       cevapAlani.textContent = "Lütfen bir şehir adı girin.";
       return;
     }
