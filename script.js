@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("sorBtn").addEventListener("click", async (event) => {
-    event.preventDefault(); // Sayfanın yenilenmesini engeller
+    event.preventDefault();
     const city = document.getElementById("cityInput").value;
     const cevapAlani = document.getElementById("cevap");
 
@@ -20,13 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       console.log("🟢 Sunucudan dönen veri:", data);
 
-      // Eğer hata varsa veya yanıt boşsa:
-      if (!data.response) {
-        cevapAlani.textContent = "⚠️ Yanıt alınamadı.";
+      if (data.reply) {
+        cevapAlani.textContent = data.reply;
       } else {
-        cevapAlani.textContent = data.reply; // Artık hata mesajıysa onu da gösterir
+        cevapAlani.textContent = `⚠️ Hata: ${data.error || "Yanıt alınamadı."}`;
       }
-
     } catch (error) {
       console.error("❌ İstek hatası:", error);
       cevapAlani.textContent = "🚨 Bir hata oluştu. Sunucuya erişilemedi.";
