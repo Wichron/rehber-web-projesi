@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("sorBtn").addEventListener("click", async () => {
+  document.getElementById("sorBtn").addEventListener("click", async (event) => {
+    event.preventDefault(); // Sayfanın yenilenmesini engeller
     const city = document.getElementById("cityInput").value;
     const cevapAlani = document.getElementById("cevap");
 
