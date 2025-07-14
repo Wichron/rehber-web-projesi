@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "openchat/openchat-3.5", // Ücretsiz ve kaliteli model
+        model: "moonshotai/kimi-k2:free", // Ücretsiz ve kaliteli model
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
