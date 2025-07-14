@@ -10,6 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log("💬 Kullanıcı mesajı:", message);
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -26,6 +27,8 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+    console.log("🤖 OpenRouter'dan gelen yanıt:", data);
+
 
     if (data.choices && data.choices[0]) {
       res.status(200).json({ reply: data.choices[0].message.content });
