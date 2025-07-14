@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   }
 
   const { prompt } = req.body;
+  
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -19,9 +20,13 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+    console.log("🧠 OpenAI'den dönen veri:", data);
     const answer = data?.choices?.[0]?.message?.content;
-
-    return res.status(200).json({ response: answer || "Yanıt alınamadı." });
+    if (!answer) {
+    console.log("⚠️ Cevap alınamadı. OpenAI yanıtı:", data);
+    return res.status(200).json({ response: "⚠️ OpenAI'den geçerli bir cevap alınamadı." });
+}
+    return res.status(200).json({ response: answer });
 
   } catch (err) {
     console.error("OpenAI API hatası:", err);
