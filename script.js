@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cevapAlani.textContent = "🧠 Yapay zeka düşünüyor...";
 
     try {
-      const response = await fetch("/api/ask", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
