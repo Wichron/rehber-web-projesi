@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: `Ankara hakkında kısa tarihi ve kültürel bilgiler ver.`
+          message: `${city} hakkında kısa tarihi ve kültürel bilgiler ver.`
         })
       });
 
