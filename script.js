@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!data.response) {
         cevapAlani.textContent = "⚠️ Yanıt alınamadı.";
       } else {
-        cevapAlani.textContent = data.response; // Artık hata mesajıysa onu da gösterir
+        cevapAlani.textContent = data.reply; // Artık hata mesajıysa onu da gösterir
       }
 
     } catch (error) {
