@@ -12,11 +12,11 @@ export default async function handler(req, res) {
   }
 
   const { message } = req.body;
-
+  console.log("Gelen prompt:", prompt);
   if (!message) {
     return res.status(400).json({ error: "Message is required" });
   }
-  console.log("Gelen prompt:", prompt);
+  
   try {
     const completion = await openai.createChatCompletion({
       model: "gpt-4o",
