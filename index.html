@@ -26,7 +26,7 @@
       responseBox.innerText = "Yanıt bekleniyor...";
 
       try {
-        const response = await fetch("https://rehber-web-projesi.vercel.app/api/chat", {
+        const response = await fetch("/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
