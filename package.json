@@ -1,0 +1,23 @@
+{
+  "name": "rehber-web-projesi",
+  "version": "1.0.0",
+  "description": "web sitesi yapacağız",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wichron/rehber-web-projesi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wichron/rehber-web-projesi/issues"
+  },
+  "homepage": "https://github.com/Wichron/rehber-web-projesi#readme",
+  "dependencies": {
+    "openai": "^5.9.0"
+  }
+}
