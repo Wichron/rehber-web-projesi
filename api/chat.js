@@ -33,6 +33,7 @@ export default async function handler(req, res) {
       res.status(500).json({ error: "No reply from model." });
     }
   } catch (err) {
-    res.status(500).json({ error: err.message || "Unknown error." });
-  }
+    console.error("🔥 Hata oluştu:", err);
+  res.status(500).json({ error: err.message || "Bilinmeyen hata" });
+}
 }
