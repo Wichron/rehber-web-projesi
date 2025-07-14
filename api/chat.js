@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "moonshotai/kimi-k2:free", // Ücretsiz ve kaliteli model
+        model: "moonshotai/kimi-k2:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
@@ -26,17 +26,21 @@ export default async function handler(req, res) {
       })
     });
 
+    console.log("🌐 API HTTP Durumu:", response.status);
     const data = await response.json();
-    console.log("🤖 OpenRouter'dan gelen yanıt:", data);
+    console.log("🤖 OpenRouter'dan gelen tam yanıt:", JSON.stringify(data, null, 2));
 
+    if (!response.ok) {
+      return res.status(response.status).json({ error: data.error || "API isteği başarısız" });
+    }
 
     if (data.choices && data.choices[0]) {
       res.status(200).json({ reply: data.choices[0].message.content });
     } else {
-      res.status(500).json({ error: "No reply from model." });
+      res.status(500).json({ error: "No reply from model.", apiResponse: data });
     }
   } catch (err) {
     console.error("🔥 Hata oluştu:", err);
-  res.status(500).json({ error: err.message || "Bilinmeyen hata" });
-}
+    res.status(500).json({ error: err.message || "Bilinmeyen hata", stack: err.stack });
+  }
 }
