@@ -24,9 +24,9 @@ export default async function handler(req, res) {
     });
 
     const responseText = completion.data.choices[0].message.content;
-
     res.status(200).json({ reply: responseText });
   } catch (error) {
+    console.error("OpenAI Error:", error);
     res.status(500).json({ error: error.message || "Something went wrong" });
   }
 }
