@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Türkiye Gezi Rehberi - Cevap</title>
-  <link rel="stylesheet" href="responsestyle.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gezi Rehberi Cevabı</title>
+  <link rel="stylesheet" href="responsestyle.css">
+  <script src="response.js" defer></script>
 </head>
 <body>
   <div id="backgroundVideo">
     <video autoplay muted loop>
-      <source src="video.mp4" type="video/mp4" />
+      <source src="video.mp4" type="video/mp4">
       Tarayıcınız video etiketini desteklemiyor.
     </video>
   </div>
 
-  <div class="search-bar">
-    <input type="text" id="cityInput" placeholder="Şehir, mekan veya anahtar kelime giriniz..." />
-    <button id="sorBtn">
-      <img src="search.png" alt="Ara" />
-    </button>
+  <nav class="global-nav">
+    <div class="button-group">
+      <button id="historyToggle" class="history-button">
+        <img src="menu.png" alt="Arama Geçmişi">
+      </button>
+      <button id="backToHome" class="home-button">Ana Sayfa</button>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="cityInput" placeholder="Şehir, mekan veya gezi ara...">
+      <button id="sorBtn"><img src="search.png" alt="Ara"></button>
+    </div>
+  </nav>
+
+  <div class="history-box" id="historyBox">
+    <h2>Arama Geçmişi</h2>
+    <ul id="searchHistory"></ul>
   </div>
 
   <div class="container">
-    <button class="home-button" id="backToHome">Ana Sayfa</button>
     <h1 class="header">Gezi Rehberi Cevabı</h1>
-
     <div class="response-box">
       <h2>Cevap</h2>
       <p id="cevap"></p>
@@ -32,17 +42,13 @@
   </div>
 
   <div class="footer">
-    <p class="footer-title">Made by XEROW TEAM</p>
-    <a href="https://www.instagram.com/yenerr___/" class="footer-link" target="_blank">
-      <img src="instagram.png" alt="Instagram" />
-      yenerr___
+    <div class="footer-title">Made by XEROW TEAM</div>
+    <a href="https://www.instagram.com/yenerr___" class="footer-link" target="_blank">
+      <img src="instagram.png" alt="Instagram"> yenerr___
     </a>
-    <a href="https://www.instagram.com/kadirwbr/" class="footer-link" target="_blank">
-      <img src="instagram.png" alt="Instagram" />
-      kadirwbr
+    <a href="https://www.instagram.com/kadirwbr" class="footer-link" target="_blank">
+      <img src="instagram.png" alt="Instagram"> kadirwbr
     </a>
   </div>
-
-  <script src="response.js"></script>
 </body>
 </html>

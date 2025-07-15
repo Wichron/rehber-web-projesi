@@ -1,4 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Arama geçmişini yükle ve göster
+  const loadSearchHistory = () => {
+    const historyList = document.getElementById('searchHistory');
+    const searchHistory = JSON.parse(localStorage.getItem('searchHistory') || '[]');
+    historyList.innerHTML = '';
+    searchHistory.forEach(city => {
+      const li = document.createElement('li');
+      li.textContent = city;
+      historyList.appendChild(li);
+    });
+  };
+
+  // Arama geçmişine yeni şehir ekle
+  const addToSearchHistory = (city) => {
+    const searchHistory = JSON.parse(localStorage.getItem('searchHistory') || '[]');
+    if (!searchHistory.includes(city)) {
+      searchHistory.unshift(city);
+      if (searchHistory.length > 10) searchHistory.pop();
+      localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+    }
+  };
+
+  // Sayfa yüklendiğinde geçmişi göster
+  loadSearchHistory();
+
+  // Arama geçmişi butonuna olay dinleyicisi ekle
+  const historyToggle = document.getElementById('historyToggle');
+  const historyBox = document.getElementById('historyBox');
+  historyToggle.addEventListener('click', () => {
+    historyBox.classList.toggle('active');
+  });
+
   // URL'den cevabı al ve göster
   const urlParams = new URLSearchParams(window.location.search);
   const cevap = urlParams.get('cevap');
@@ -11,12 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Ana Sayfa butonuna olay dinleyicisi ekle
   document.getElementById('backToHome').addEventListener('click', () => {
-    window.location.href = 'index.html'; // Göreceli yol kullanımı
+    window.location.href = 'index.html';
   });
 
   // Arama çubuğu butonuna olay dinleyicisi ekle
   document.getElementById("sorBtn").addEventListener("click", async (event) => {
-    event.preventDefault(); // Formun varsayılan gönderimini engelle
+    event.preventDefault();
     const city = document.getElementById("cityInput").value.trim();
     
     if (city === '') {
@@ -24,8 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    addToSearchHistory(city);
+    loadSearchHistory();
+
     try {
-      // API çağrısı
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
@@ -40,17 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("🟢 Sunucudan dönen veri:", data);
 
       if (data.reply) {
-        // Cevabı URL parametresi olarak kodla ve response.html'ye yönlendir
         const encodedResponse = encodeURIComponent(data.reply);
         window.location.href = `response.html?cevap=${encodedResponse}`;
       } else {
-        // Hata durumunda response.html'ye hata mesajıyla yönlendir
         const errorMessage = encodeURIComponent(`⚠️ Hata: ${data.error || "Yanıt alınamadı."}`);
         window.location.href = `response.html?cevap=${errorMessage}`;
       }
     } catch (error) {
       console.error("❌ İstek hatası:", error);
-      // Hata durumunda response.html'ye hata mesajıyla yönlendir
       const errorMessage = encodeURIComponent("🚨 Bir hata oluştu. Sunucuya erişilemedi.");
       window.location.href = `response.html?cevap=${errorMessage}`;
     }

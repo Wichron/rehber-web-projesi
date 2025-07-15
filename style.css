@@ -132,7 +132,7 @@ body:has(.info-box:hover) #backgroundVideo video {
 
 .info-box {
   position: fixed; /* Sağ üstte sabit konum */
-  top: 20px; /* Üstten 20px boşluk */
+  bottom: 20px; /* Alttan 20px boşluk */
   right: 20px; /* Sağdan 20px boşluk */
   width: 300px; /* Sabit genişlik */
   background: rgba(255, 255, 255, 0.2); /* Arama çubuğuyla uyumlu şeffaf arka plan */
