@@ -24,32 +24,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Form gönderildiğinde
-  const signupForm = document.getElementById("signupForm");
-  if (signupForm) {
-    signupForm.addEventListener("submit", (event) => {
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", (event) => {
       event.preventDefault(); // Varsayılan form gönderimini engelle
-
       const formData = new FormData(event.target);
-      const password = formData.get("password");
-      const confirmPassword = formData.get("confirmPassword");
-
-      // Şifre ve şifre tekrar alanlarını karşılaştır
-      if (password !== confirmPassword) {
-        alert("Şifreler eşleşmiyor! Lütfen şifrenizi tekrar kontrol edin.");
-        return; // Şifreler eşleşmiyorsa işlemi durdur
-      }
-
-      const userData = {
-        username: formData.get("username"),
-        password: password,
-        email: formData.get("email"),
-        firstName: formData.get("firstName"),
-        lastName: formData.get("lastName")
+      const loginData = {
+        usernameOrEmail: formData.get("usernameOrEmail"),
+        password: formData.get("password")
       };
-      console.log("Kayıt Verileri:", userData); // Sunucuya gönderilecek veriler
-      alert("Kayıt işlemi başarıyla gönderildi! (Bu bir demo, gerçek bir sunucuya gönderilmedi.)");
+      console.log("Giriş Verileri:", loginData); // Sunucuya gönderilecek veriler
+      alert("Giriş işlemi başarıyla gönderildi! (Bu bir demo, gerçek bir sunucuya gönderilmedi.)");
       // Gerçek bir uygulamada burada API çağrısı yapılır
-      // Örnek: fetch("/api/signup", { method: "POST", body: JSON.stringify(userData) });
+      // Örnek: fetch("/api/login", { method: "POST", body: JSON.stringify(loginData) });
     });
   }
 });

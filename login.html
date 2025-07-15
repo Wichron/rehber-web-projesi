@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gezi Rehberi Cevabı</title>
-  <link rel="stylesheet" href="responsestyle.css">
+  <title>Giriş Yap</title>
+  <link rel="stylesheet" href="loginstyle.css">
 </head>
 <body>
   <div id="backgroundVideo">
@@ -16,16 +16,7 @@
 
   <nav class="global-nav">
     <div class="button-group">
-      <button class="history-button" id="historyToggle">
-        <img src="menu.png" alt="Arama Geçmişi">
-      </button>
       <button class="home-button" id="backToHome">Ana Sayfa</button>
-    </div>
-    <div class="search-bar">
-      <input type="text" id="cityInput" placeholder="Şehir veya mekan ara...">
-      <button type="submit" id="sorBtn">
-        <img src="search.png" alt="Ara">
-      </button>
     </div>
   </nav>
 
@@ -34,16 +25,20 @@
     <button class="auth-button" id="loginBtn">Giriş Yap</button>
   </div>
 
-  <div class="history-box" id="historyBox">
-    <h2>Arama Geçmişi</h2>
-    <ul id="searchHistory"></ul>
-  </div>
-
   <div class="container">
-    <h1 class="header">Gezi Rehberi Cevabı</h1>
-    <div class="response-box">
-      <h2>Cevap</h2>
-      <p id="cevap"></p>
+    <h1 class="header">Giriş Yap</h1>
+    <div class="login-box">
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="usernameOrEmail">Kullanıcı Adı veya E-posta</label>
+          <input type="text" id="usernameOrEmail" name="usernameOrEmail" placeholder="Kullanıcı adı veya e-posta girin" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Şifre</label>
+          <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required>
+        </div>
+        <button type="submit" class="submit-button">Giriş Yap</button>
+      </form>
     </div>
   </div>
 
@@ -57,6 +52,6 @@
     </a>
   </div>
 
-  <script src="response.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>
