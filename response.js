@@ -17,6 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
     searchHistory.forEach(city => {
       const li = document.createElement('li');
       li.textContent = city;
+      // Arama geçmişine tıklama olayı ekle
+      li.addEventListener('click', () => {
+        const cityInput = document.getElementById('cityInput');
+        const sorBtn = document.getElementById('sorBtn');
+        cityInput.value = city; // Tıklanan şehri input'a yaz
+        sorBtn.click(); // Arama butonunu programatik olarak tetikle
+        document.getElementById('historyBox').classList.remove('active'); // Arama geçmişini kapat
+        document.querySelector('.response-box').classList.remove('history-active'); // Cevap kutusunu sola geri getir
+      });
       historyList.appendChild(li);
     });
   };
@@ -37,14 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Arama geçmişi butonuna olay dinleyicisi ekle
   const historyToggle = document.getElementById('historyToggle');
   const historyBox = document.getElementById('historyBox');
+  const responseBox = document.querySelector('.response-box');
   historyToggle.addEventListener('click', () => {
     historyBox.classList.toggle('active');
+    responseBox.classList.toggle('history-active'); // Response-box için sınıf ekle/kaldır
   });
 
   // Arama geçmişi kutusunu dışarıda tıklama ile kapatma
   document.addEventListener('click', (event) => {
     if (!historyBox.contains(event.target) && !historyToggle.contains(event.target)) {
       historyBox.classList.remove('active');
+      responseBox.classList.remove('history-active'); // Response-box sınıfını kaldır
     }
   });
 
@@ -69,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const city = document.getElementById("cityInput").value.trim();
     
     if (city === '') {
-      alert('Lütfen bir şehir giriniz.');
       return;
     }
 

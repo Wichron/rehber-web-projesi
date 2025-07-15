@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Şifre ve şifre tekrar alanlarını karşılaştır
       if (password !== confirmPassword) {
-        alert("Şifreler eşleşmiyor! Lütfen şifrenizi tekrar kontrol edin.");
         return; // Şifreler eşleşmiyorsa işlemi durdur
       }
 
@@ -47,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         lastName: formData.get("lastName")
       };
       console.log("Kayıt Verileri:", userData); // Sunucuya gönderilecek veriler
-      alert("Kayıt işlemi başarıyla gönderildi! (Bu bir demo, gerçek bir sunucuya gönderilmedi.)");
       // Gerçek bir uygulamada burada API çağrısı yapılır
       // Örnek: fetch("/api/signup", { method: "POST", body: JSON.stringify(userData) });
     });

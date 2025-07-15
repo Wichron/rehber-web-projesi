@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         password: formData.get("password")
       };
       console.log("Giriş Verileri:", loginData); // Sunucuya gönderilecek veriler
-      alert("Giriş işlemi başarıyla gönderildi! (Bu bir demo, gerçek bir sunucuya gönderilmedi.)");
       // Gerçek bir uygulamada burada API çağrısı yapılır
       // Örnek: fetch("/api/login", { method: "POST", body: JSON.stringify(loginData) });
     });

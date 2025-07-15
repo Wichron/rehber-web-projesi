@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const city = document.getElementById("cityInput").value.trim();
     
     if (city === '') {
-      alert('Lütfen bir şehir giriniz.');
       return;
     }
 
