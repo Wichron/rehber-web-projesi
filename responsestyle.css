@@ -1,0 +1,282 @@
+body {
+  font-family: Arial, sans-serif; /* Yazı tipi */
+  font-weight: bolder; /* Yazı kalınlığı */
+  background-color: rgb(67, 70, 69); /* Arka plan rengi */
+  margin: 0; /* Kenar boşluklarını sıfırla */
+  text-align: center; /* Metni ortala */
+  overflow: hidden; /* Taşan içeriği gizle */
+  display: flex;
+  flex-direction: column; /* Elemanları dikey olarak sırala */
+  align-items: center; /* Yatayda ortala */
+  justify-content: center; /* Dikeyde ortala */
+  height: 100vh; /* Tüm ekran yüksekliğini kapla */
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Elemanları alt alta yerleştir */
+  align-items: center; /* Yatayda ortala */
+  width: 100%;
+  max-width: 700px; /* Maksimum genişlik */
+  padding: 20px;
+  box-sizing: border-box; /* Padding'i genişliğe dahil et */
+  margin-top: 100px; /* Arama çubuğu için üstte boşluk */
+}
+
+.header {
+  font-size: 36px; /* Büyük yazı boyutu */
+  font-weight: bold; /* Kalın yazı */
+  color: #cac7ff; /* Arama çubuğuyla uyumlu renk */
+  margin-bottom: 20px; /* Arama çubuğuyla arasında boşluk */
+  text-align: center; /* Metni ortala */
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 700px; /* Maksimum genişlik */
+  display: flex;
+  background: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border-radius: 30px; /* Daha küçük yuvarlak kenarlar */
+  padding: 0 0; /* İç boşluk: üst/alt 0px, sağ/sol 10px */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Gölge efekti */
+  align-items: center; /* İçeriği dikeyde ortala */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Gölge ve büyüme animasyonu */
+  z-index: 10; /* Öne çıkarma */
+  position: fixed; /* Sayfanın en üstüne sabitle */
+  top: 10px; /* Üstten 20 piksel mesafe */
+  left: 50%; /* Ortadan hizala */
+  transform: translateX(-50%); /* Yatayda merkeze al */
+}
+
+.search-bar:hover {
+  box-shadow: 
+    0 0 12px 4px #cac7ff,
+    0 0 24px 8px #cac7ff; /* Üzerine gelindiğinde parlama efekti */
+}
+
+.search-bar:focus-within {
+  box-shadow: 
+    0 0 12px 4px #cac7ff,
+    0 0 24px 8px #cac7ff; /* Fokuslandığında parlama efekti */
+  transform: translateX(-50%) scale(1.05); /* %5 büyüme, yatay merkezlemeyi koru */
+}
+
+body:has(.search-bar:focus-within) #backgroundVideo video {
+  filter: brightness(0.8); /* Daha hafif karartma */
+  transition: filter 1.2s cubic-bezier(0.1, 0, 0, 1); /* Daha yumuşak ve uzun geçiş */
+}
+
+body:has(.info-box:hover) #backgroundVideo video {
+  filter: brightness(0.8); /* Daha hafif karartma */
+  transition: filter 1.2s cubic-bezier(0.33, 0, 0, 1); /* Daha yumuşak ve uzun geçiş */
+}
+
+.search-bar input {
+  flex: 1; /* Girdi alanı tüm boşluğu kapsasın */
+  background: transparent; /* Şeffaf arka plan */
+  border: none; /* Kenarlık yok */
+  outline: none; /* Fokus çerçevesi yok */
+  padding: 10px 15px; /* İç boşluk: üst/alt 10px, sağ/sol 15px */
+  font-size: 16px; /* Daha küçük yazı boyutu */
+  color: #cac7ff; /* Yazı rengi */
+}
+
+.search-bar button {
+  border: none; /* Kenarlık yok */
+  background: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border-radius: 50%; /* Yuvarlak şekil */
+  width: 50px; /* Genişlik */
+  height: 50px; /* Yükseklik */
+  cursor: pointer; /* El imleci */
+  transition: box-shadow 0.3s ease; /* Gölge geçiş animasyonu */
+}
+
+.search-bar button:hover {
+  box-shadow: 
+    0 0 8px 2px #cac7ff,
+    0 0 16px 4px #cac7ff; /* Üzerine gelindiğinde parlama efekti */
+}
+
+.search-bar button img {
+  width: 20px; /* Daha küçük arama simgesi boyutu */
+}
+
+::placeholder {
+  color: #cac7ff; /* Yer tutucu metin rengi */
+}
+
+#backgroundVideo {
+  position: fixed; /* Sabit konum */
+  z-index: -1; /* Arka plana al */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Tam ekran genişliği */
+  height: 100vh; /* Tam ekran yüksekliği */
+  overflow: hidden; /* Taşan içeriği gizle */
+}
+
+#backgroundVideo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Videoyu ekranı kaplayacak şekilde ayarla */
+  filter: blur(2px); /* Varsayılan bulanıklık efekti */
+  transition: filter 1.2s cubic-bezier(0.33, 0, 0, 1); /* Daha yumuşak ve uzun geçiş */
+}
+
+#cevap {
+  margin-top: 15px; /* Arama çubuğunun altında boşluk */
+  width: 100%;
+  max-width: 700px; /* Maksimum genişlik */
+  color: #cac7ff; /* Yazı rengi */
+  font-size: 18px; /* Yazı boyutu */
+  text-align: center; /* Metni ortala */
+  white-space: pre-line; /* Satır sonlarını koru */
+  word-wrap: break-word; /* Uzun kelimeleri kır */
+}
+
+.info-box {
+  position: fixed; /* Sağ üstte sabit konum */
+  top: 20px; /* Üstten 20px boşluk */
+  right: 20px; /* Sağdan 20px boşluk */
+  width: 300px; /* Sabit genişlik */
+  background: rgba(255, 255, 255, 0.2); /* Arama çubuğuyla uyumlu şeffaf arka plan */
+  border-radius: 10px; /* Hafif yuvarlatılmış köşeler (kare görünüm) */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Arama çubuğuyla uyumlu gölge */
+  padding: 20px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  text-align: left; /* Metni sola hizala */
+  z-index: 5; /* Arama çubuğunun altında, videonun üstünde */
+  transition: box-shadow 0.3s ease; /* Gölge geçiş animasyonu */
+}
+
+.info-box:hover {
+  box-shadow: 
+    0 0 12px 4px #cac7ff,
+    0 0 24px 8px #cac7ff; /* Üzerine gelindiğinde parlama efekti */
+}
+
+.info-box h2 {
+  font-size: 24px; /* Başlık boyutu */
+  font-weight: bold; /* Kalın yazı */
+  margin: 0 0 10px 0; /* Üstte ve altta boşluk */
+  text-align: center; /* Başlığı ortala */
+}
+
+.info-box p {
+  font-size: 16px; /* Metin boyutu */
+  font-weight: normal; /* Normal kalınlık */
+  margin: 0; /* Varsayılan boşlukları kaldır */
+  line-height: 1.5; /* Satır aralığı */
+}
+
+.footer {
+  position: fixed; /* Sol altta sabit konum */
+  bottom: 20px; /* Alttan 20px boşluk */
+  left: 20px; /* Soldan 20px boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  z-index: 5; /* Videonun üstünde, arama çubuğunun altında */
+  text-align: left; /* Sola hizala */
+}
+
+.footer-title {
+  font-size: 18px; /* Başlık yazı boyutu */
+  font-weight: bold; /* Kalın yazı */
+  margin: 0 0 10px 0; /* Altında boşluk */
+}
+
+.footer-link {
+  display: flex; /* Logo ve metni yan yana hizala */
+  align-items: center; /* Dikeyde ortala */
+  font-size: 16px; /* Daha küçük yazı boyutu */
+  font-weight: normal; /* Normal kalınlık */
+  color: #cac7ff; /* Yazı rengi */
+  text-decoration: none; /* Varsayılan alt çizgiyi kaldır */
+  margin: 5px 0; /* Linkler arasında boşluk */
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Üzerine gelindiğinde alt çizgi */
+}
+
+.footer-link img {
+  width: 20px; /* Instagram logosu boyutu */
+  margin-right: 8px; /* Logo ile metin arasında boşluk */
+}
+
+.response-box {
+  position: relative; /* Arama çubuğunun altında yer alması için */
+  width: 100%;
+  max-width: 700px; /* Arama çubuğuyla aynı genişlik */
+  background: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border-radius: 10px; /* Hafif yuvarlatılmış köşeler */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Varsayılan gölge */
+  padding: 20px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  text-align: left; /* Metni sola hizala */
+  margin-top: 20px; /* Arama çubuğundan boşluk */
+  z-index: 5; /* Videonun üstünde */
+  transition: box-shadow 0.3s ease; /* Gölge geçiş animasyonu */
+}
+
+.response-box:hover {
+  box-shadow: 
+    0 0 12px 4px #cac7ff,
+    0 0 24px 8px #cac7ff; /* Üzerine gelindiğinde parlama efekti */
+}
+
+.response-box h2 {
+  font-size: 24px; /* Başlık boyutu */
+  font-weight: bold; /* Kalın yazı */
+  margin: 0 0 10px 0; /* Üstte ve altta boşluk */
+  text-align: center; /* Başlığı ortala */
+}
+
+.response-box p {
+  font-size: 18px; /* Yazı boyutu */
+  font-weight: normal; /* Normal kalınlık */
+  margin: 0; /* Varsayılan boşlukları kaldır */
+  line-height: 1.5; /* Satır aralığı */
+  white-space: pre-line; /* Satır sonlarını koru */
+  word-wrap: break-word; /* Uzun kelimeleri kır */
+}
+
+body:has(.response-box:hover) #backgroundVideo video {
+  filter: brightness(0.8); /* Daha hafif karartma */
+  transition: filter 1.2s cubic-bezier(0.33, 0, 0, 1); /* Yumuşak geçiş */
+}
+
+.home-button {
+  position: absolute; /* Sol üstte sabit konum */
+  top: 20px; /* Üstten 20px boşluk */
+  left: 20px; /* Soldan 20px boşluk */
+  background-color: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border: none; /* Kenarlık yok */
+  border-radius: 5px; /* Hafif yuvarlatılmış köşeler */
+  padding: 10px 20px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  font-size: 16px; /* Yazı boyutu */
+  cursor: pointer; /* El imleci */
+  transition: background-color 0.3s ease; /* Arka plan geçiş animasyonu */
+}
+
+.home-button:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* Üzerine gelindiğinde daha belirgin */
+}
+
+/* Autocomplete önerilerinin stilini eşitleme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #cac7ff !important;
+  font-size: 16px !important; /* Arama çubuğuyla uyumlu yazı boyutu */
+  font-family: Arial, sans-serif !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Tarayıcıya özgü hover stilini dengeleme (tam kontrol sınırlı) */
+input:-webkit-autofill:hover {
+  -webkit-text-fill-color: #cac7ff !important;
+  font-size: 16px !important; /* Arama çubuğuyla uyumlu yazı boyutu */
+  font-family: Arial, sans-serif !important;
+}

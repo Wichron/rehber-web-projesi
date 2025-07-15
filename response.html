@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ana Sayfa</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Türkiye Gezi Rehberi - Cevap</title>
+  <link rel="stylesheet" href="responsestyle.css" />
 </head>
 <body>
   <div id="backgroundVideo">
     <video autoplay muted loop>
-      <source src="https://www.example.com/video.mp4" type="video/mp4">
+      <source src="video.mp4" type="video/mp4" />
       Tarayıcınız video etiketini desteklemiyor.
     </video>
   </div>
 
+  <div class="search-bar">
+    <input type="text" id="cityInput" placeholder="Şehir, mekan veya anahtar kelime giriniz..." />
+    <button id="sorBtn">
+      <img src="search.png" alt="Ara" />
+    </button>
+  </div>
+
   <div class="container">
-    <button id="backToHome" class="home-button">Ana Sayfa</button>
+    <button class="home-button" id="backToHome">Ana Sayfa</button>
     <h1 class="header">Gezi Rehberi Cevabı</h1>
+
     <div class="response-box">
-      <div id="cevap"></div>
+      <h2>Cevap</h2>
+      <p id="cevap"></p>
     </div>
   </div>
 
   <div class="footer">
-    <div class="footer-title">Made by XEROW TEAM</div>
-    <a href="https://instagram.com/yenerr___" target="_blank" class="footer-link">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    <p class="footer-title">Made by XEROW TEAM</p>
+    <a href="https://www.instagram.com/yenerr___/" class="footer-link" target="_blank">
+      <img src="instagram.png" alt="Instagram" />
       yenerr___
     </a>
-    <a href="https://instagram.com/kadirwbr" target="_blank" class="footer-link">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    <a href="https://www.instagram.com/kadirwbr/" class="footer-link" target="_blank">
+      <img src="instagram.png" alt="Instagram" />
       kadirwbr
     </a>
   </div>
