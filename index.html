@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ankara Rehber - Cevap</title>
+  <title>Ankara Rehber</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1 class="header">Türkiye Gezi Rehberi</h1>
-    <form action="index.html" class="search-bar">
+    <form action="" class="search-bar">
       <input type="text" id="cityInput" name="arama" placeholder="Aramak istediğiniz şehri giriniz." required>
       <button id="sorBtn" type="submit"><img src="search.png"></button>
     </form>
-    <div class="response-box">
-      <h2>Gezi Rehberi Cevabı</h2>
-      <p id="cevap"></p>
-    </div>
+    <div id="cevap"></div>
   </div>
   <div id="backgroundVideo">
     <video autoplay muted loop>
       <source src="video.mp4" type="video/mp4">
       Tarayıcınız video etiketini desteklemiyor.
     </video>
+  </div>
+  <div class="info-box">
+    <h2>Nasıl Kullanılır?</h2>
+    <p>Türkiye Gezi Rehberi yapay zekasını kullanmak için aramak istediğiniz şehir, mekan veya gezinizle ilgili anahtar kelimeleri giriniz. Ardından yapay zeka size tüm detaylarıyla beraber gezinizde yardımcı olacak bilgileri önünüze sersin.</p>
   </div>
   <div class="footer">
     <p class="footer-title">Made by XEROW TEAM</p>
@@ -33,6 +34,6 @@
       <img src="instagram.png" alt="Instagram Logo"> kadirwbr
     </a>
   </div>
-  <script src="response.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -2,43 +2,38 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ankara Rehber - Cevap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Sayfa</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1 class="header">Türkiye Gezi Rehberi</h1>
-    <form action="" class="search-bar">
-      <input type="text" id="cityInput" name="arama" placeholder="Aramak istediğiniz şehri giriniz." required>
-      <button id="sorBtn" type="submit"><img src="search.png"></button>
-    </form>
-    <div class="response-box">
-      <h2>Gezi Rehberi Cevabı</h2>
-      <p id="cevap"></p>
-    </div>
-  </div>
   <div id="backgroundVideo">
     <video autoplay muted loop>
-      <source src="video.mp4" type="video/mp4">
+      <source src="https://www.example.com/video.mp4" type="video/mp4">
       Tarayıcınız video etiketini desteklemiyor.
     </video>
   </div>
-  <div class="info-box">
-    <h2>Nasıl Kullanılır?</h2>
-    <p>Türkiye Gezi Rehberi yapay zekasını kullanmak için aramak istediğiniz şehir, mekan veya gezinizle ilgili anahtar kelimeleri giriniz. Ardından yapay zeka size tüm detaylarıyla beraber gezinizde yardımcı olacak bilgileri率先
 
-System: bilgileri önünüze sersin.</p>
+  <div class="container">
+    <button id="backToHome" class="home-button">Ana Sayfa</button>
+    <h1 class="header">Gezi Rehberi Cevabı</h1>
+    <div class="response-box">
+      <div id="cevap"></div>
+    </div>
   </div>
+
   <div class="footer">
-    <p class="footer-title">Made by XEROW TEAM</p>
-    <a href="https://www.instagram.com/yenerr___/" class="footer-link" target="_blank" rel="noopener noreferrer">
-      <img src="instagram.png" alt="Instagram Logo"> yenerr___
+    <div class="footer-title">Made by XEROW TEAM</div>
+    <a href="https://instagram.com/yenerr___" target="_blank" class="footer-link">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      yenerr___
     </a>
-    <a href="https://www.instagram.com/kadirwbr/" class="footer-link" target="_blank" rel="noopener noreferrer">
-      <img src="instagram.png" alt="Instagram Logo"> kadirwbr
+    <a href="https://instagram.com/kadirwbr" target="_blank" class="footer-link">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      kadirwbr
     </a>
   </div>
+
   <script src="response.js"></script>
 </body>
 </html>

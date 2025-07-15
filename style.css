@@ -240,3 +240,105 @@ body:has(.response-box:hover) #backgroundVideo video {
   filter: brightness(0.8); /* Daha hafif karartma */
   transition: filter 1.2s cubic-bezier(0.33, 0, 0, 1); /* Yumuşak geçiş */
 }
+
+body {
+  font-family: Arial, sans-serif; /* Yazı tipi */
+  font-weight: bolder; /* Yazı kalınlığı */
+  background-color: rgb(67, 70, 69); /* Arka plan rengi */
+  margin: 0; /* Kenar boşluklarını sıfırla */
+  text-align: center; /* Metni ortala */
+  overflow: hidden; /* Taşan içeriği gizle */
+  display: flex;
+  flex-direction: column; /* Elemanları dikey olarak sırala */
+  align-items: center; /* Yatayda ortala */
+  justify-content: center; /* Dikeyde ortala */
+  height: 100vh; /* Tüm ekran yüksekliğini kapla */
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Elemanları alt alta yerleştir */
+  align-items: center; /* Yatayda ortala */
+  width: 100%;
+  max-width: 700px; /* Maksimum genişlik */
+  padding: 20px;
+  box-sizing: border-box; /* Padding'i genişliğe dahil et */
+}
+
+.home-button {
+  position: absolute; /* Sol üstte sabit konum */
+  top: 20px; /* Üstten 20px boşluk */
+  left: 20px; /* Soldan 20px boşluk */
+  background-color: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border: none; /* Kenarlık yok */
+  border-radius: 5px; /* Hafif yuvarlatılmış köşeler */
+  padding: 10px 20px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  font-size: 16px; /* Yazı boyutu */
+  cursor: pointer; /* El imleci */
+  transition: background-color 0.3s ease; /* Arka plan geçiş animasyonu */
+}
+
+.home-button:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* Üzerine gelindiğinde daha belirgin */
+}
+
+.response-box {
+  position: relative; /* Arama çubuğunun altında yer alması için */
+  width: 100%;
+  max-width: 700px; /* Arama çubuğuyla aynı genişlik */
+  background: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border-radius: 10px; /* Hafif yuvarlatılmış köşeler */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Varsayılan gölge */
+  padding: 20px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  text-align: left; /* Metni sola hizala */
+  margin-top: 20px; /* Arama çubuğundan boşluk */
+  z-index: 5; /* Videonun üstünde */
+  transition: box-shadow 0.3s ease; /* Gölge geçiş animasyonu */
+}
+
+.response-box:hover {
+  box-shadow: 
+    0 0 12px 4px #cac7ff,
+    0 0 24px 8px #cac7ff; /* Üzerine gelindiğinde parlama efekti */
+}
+
+.response-box h2 {
+  font-size: 24px; /* Başlık boyutu */
+  font-weight: bold; /* Kalın yazı */
+  margin: 0 0 10px 0; /* Üstte ve altta boşluk */
+  text-align: center; /* Başlığı ortala */
+}
+
+.response-box p {
+  font-size: 18px; /* Yazı boyutu */
+  font-weight: normal; /* Normal kalınlık */
+  margin: 0; /* Varsayılan boşlukları kaldır */
+  line-height: 1.5; /* Satır aralığı */
+  white-space: pre-line; /* Satır sonlarını koru */
+  word-wrap: break-word; /* Uzun kelimeleri kır */
+}
+
+body:has(.response-box:hover) #backgroundVideo video {
+  filter: brightness(0.8); /* Daha hafif karartma */
+  transition: filter 1.2s cubic-bezier(0.33, 0, 0, 1); /* Yumuşak geçiş */
+}
+
+/* Autocomplete önerilerinin stilini eşitleme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #cac7ff !important;
+  font-size: 20px !important;
+  font-family: Arial, sans-serif !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Tarayıcıya özgü hover stilini dengeleme (tam kontrol sınırlı) */
+input:-webkit-autofill:hover {
+  -webkit-text-fill-color: #cac7ff !important;
+  font-size: 20px !important;
+  font-family: Arial, sans-serif !important;
+}
