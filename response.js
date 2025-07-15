@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Kayıt Ol butonuna olay dinleyicisi ekle
+  document.getElementById("signupBtn").addEventListener("click", () => {
+    window.location.href = "signup.html"; // Aynı sekmede signup.html'ye yönlendir
+  });
+
   // Arama geçmişini yükle ve göster
   const loadSearchHistory = () => {
     const historyList = document.getElementById('searchHistory');
@@ -29,6 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const historyBox = document.getElementById('historyBox');
   historyToggle.addEventListener('click', () => {
     historyBox.classList.toggle('active');
+  });
+
+  // Arama geçmişi kutusunu dışarıda tıklama ile kapatma
+  document.addEventListener('click', (event) => {
+    if (!historyBox.contains(event.target) && !historyToggle.contains(event.target)) {
+      historyBox.classList.remove('active');
+    }
   });
 
   // URL'den cevabı al ve göster

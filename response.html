@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gezi Rehberi Cevabı</title>
   <link rel="stylesheet" href="responsestyle.css">
-  <script src="response.js" defer></script>
 </head>
 <body>
   <div id="backgroundVideo">
@@ -17,16 +16,23 @@
 
   <nav class="global-nav">
     <div class="button-group">
-      <button id="historyToggle" class="history-button">
-        <img src="menu.png" alt="Arama Geçmişi">
+      <button class="history-button" id="historyToggle">
+        <img src="menu.png" alt="History Icon">
       </button>
-      <button id="backToHome" class="home-button">Ana Sayfa</button>
+      <button class="home-button" id="backToHome">Ana Sayfa</button>
     </div>
     <div class="search-bar">
-      <input type="text" id="cityInput" placeholder="Şehir, mekan veya gezi ara...">
-      <button id="sorBtn"><img src="search.png" alt="Ara"></button>
+      <input type="text" id="cityInput" placeholder="Şehir ara...">
+      <button id="sorBtn">
+        <img src="search.png" alt="Search Icon">
+      </button>
     </div>
   </nav>
+
+  <div class="auth-buttons">
+    <button class="auth-button signup-button" id="signupBtn">Kayıt Ol</button>
+    <button class="auth-button">Giriş Yap</button>
+  </div>
 
   <div class="history-box" id="historyBox">
     <h2>Arama Geçmişi</h2>
@@ -36,19 +42,20 @@
   <div class="container">
     <h1 class="header">Gezi Rehberi Cevabı</h1>
     <div class="response-box">
-      <h2>Cevap</h2>
-      <p id="cevap"></p>
+      <p id="cevap">Cevap</p>
     </div>
   </div>
 
-  <div class="footer">
-    <div class="footer-title">Made by XEROW TEAM</div>
-    <a href="https://www.instagram.com/yenerr___" class="footer-link" target="_blank">
-      <img src="instagram.png" alt="Instagram"> yenerr___
+  <footer class="footer">
+    <h3 class="footer-title">Made by XEROW TEAM</h3>
+    <a href="https://www.instagram.com/yenerr___/" class="footer-link">
+      <img src="instagram.png" alt="Instagram Icon"> yenerr___
     </a>
-    <a href="https://www.instagram.com/kadirwbr" class="footer-link" target="_blank">
-      <img src="instagram.png" alt="Instagram"> kadirwbr
+    <a href="https://www.instagram.com/kadirwbr/" class="footer-link">
+      <img src="instagram.png" alt="Instagram Icon"> kadirwbr
     </a>
-  </div>
+  </footer>
+
+  <script src="response.js"></script>
 </body>
 </html>
