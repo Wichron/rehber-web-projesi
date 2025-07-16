@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Türkiye Gezi Rehberi</title>
   <link rel="stylesheet" href="style.css">
+  <script src="auth.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <div id="backgroundVideo">
@@ -14,18 +16,13 @@
     </video>
   </div>
 
-  <div class="auth-buttons">
-    <button class="auth-button signup-button" id="signupBtn">Kayıt Ol</button>
-    <button class="auth-button" id="loginBtn">Giriş Yap</button>
-  </div>
+  <div class="auth-buttons" id="authButtons"></div>
 
   <div class="container">
     <h1 class="header">Türkiye Gezi Rehberi</h1>
     <form class="search-bar">
       <input type="text" id="cityInput" placeholder="Şehir veya mekan ara...">
-      <button type="submit" id="sorBtn">
-        <img src="search.png" alt="Ara">
-      </button>
+      <button type="submit" id="sorBtn"><img src="search.png" alt="Ara"></button>
     </form>
 
     <div class="info-box">
@@ -36,14 +33,8 @@
 
   <div class="footer">
     <h3 class="footer-title">Made by XEROW TEAM</h3>
-    <a href="https://www.instagram.com/yenerr___" class="footer-link">
-      <img src="instagram.png" alt="Instagram"> yenerr___
-    </a>
-    <a href="https://www.instagram.com/kadirwbr" class="footer-link">
-      <img src="instagram.png" alt="Instagram"> kadirwbr
-    </a>
+    <a href="https://www.instagram.com/yenerr___" class="footer-link"><img src="instagram.png" alt="Instagram"> yenerr___</a>
+    <a href="https://www.instagram.com/kadirwbr" class="footer-link"><img src="instagram.png" alt="Instagram"> kadirwbr</a>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>

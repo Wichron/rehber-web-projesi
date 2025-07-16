@@ -1,14 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Kayıt Ol butonuna olay dinleyicisi ekle
-  document.getElementById("signupBtn").addEventListener("click", () => {
-    window.location.href = "signup.html"; // Aynı sekmede signup.html'ye yönlendir
-  });
-
-  // Giriş Yap butonuna olay dinleyicisi ekle
-  document.getElementById("loginBtn").addEventListener("click", () => {
-    window.location.href = "login.html"; // Aynı sekmede login.html'ye yönlendir
-  });
-
   // Arama çubuğu butonuna olay dinleyicisi ekle
   document.getElementById("sorBtn").addEventListener("click", async (event) => {
     event.preventDefault(); // Formun varsayılan gönderimini engelle

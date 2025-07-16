@@ -309,7 +309,51 @@ body:has(.response-box:hover) #backgroundVideo video {
   backdrop-filter: blur(6px); /* Daha fazla bulanıklık */
   background: rgba(0, 0, 0, 0.637); /* Koyu arka plan */
   color: #cac7ff; /* Yazı rengi */
+}
 
+/* Kullanıcı adı kutusu */
+.username-box {
+  background: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border-radius: 20px; /* Yuvarlatılmış köşeler */
+  padding: 8px 16px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  font-size: 14px; /* Yazı boyutu */
+  font-weight: bold; /* Kalın yazı */
+  display: flex;
+  align-items: center; /* Dikeyde ortala */
+  gap: 10px; /* Elemanlar arasında boşluk */
+  backdrop-filter: blur(4px); /* Hafif bulanıklık efekti */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Gölge ve büyüme animasyonu */
+}
+
+/* Kullanıcı adı kutusu üzerine gelindiğinde */
+.username-box:hover {
+  box-shadow: 
+    0 0 8px 2px #cac7ff,
+    0 0 16px 4px #cac7ff; /* Parlama efekti */
+  transform: scale(1.05); /* %5 büyüme */
+}
+
+/* Çıkış yap butonu */
+.logout-button {
+  background: rgba(0, 0, 0, 0.637); /* Koyu arka plan */
+  border: none; /* Kenarlık yok */
+  border-radius: 20px; /* Yuvarlatılmış köşeler */
+  padding: 8px 16px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  font-size: 14px; /* Yazı boyutu */
+  font-weight: bold; /* Kalın yazı */
+  cursor: pointer; /* El imleci */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Gölge ve büyüme animasyonu */
+  backdrop-filter: blur(6px); /* Hafif bulanıklık efekti */
+}
+
+/* Çıkış yap butonu üzerine gelindiğinde */
+.logout-button:hover {
+  box-shadow: 
+    0 0 8px 2px #cac7ff,
+    0 0 16px 4px #cac7ff; /* Parlama efekti */
+  transform: scale(1.05); /* %5 büyüme */
 }
 
 /* Otomatik doldurma (autocomplete) stilleri */
