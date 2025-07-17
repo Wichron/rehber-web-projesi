@@ -276,7 +276,7 @@ body:has(.response-box:hover) #backgroundVideo video {
 .auth-buttons {
   position: fixed; /* Sağ üstte sabit konum */
   top: 20px; /* Üstten 20px boşluk */
-  right: 20px; /* Sağdan 20px boşluk */
+  right: 30px; /* Sağdan 30px boşluk (sola kaydırmak için artırıldı) */
   display: flex;
   gap: 10px; /* Butonlar arasında 10px boşluk */
   z-index: 10; /* Arama çubuğunun üstünde */
@@ -324,6 +324,8 @@ body:has(.response-box:hover) #backgroundVideo video {
   gap: 10px; /* Elemanlar arasında boşluk */
   backdrop-filter: blur(4px); /* Hafif bulanıklık efekti */
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Gölge ve büyüme animasyonu */
+  position: relative; /* Dropdown menü için referans */
+  cursor: pointer; /* El imleci */
 }
 
 /* Kullanıcı adı kutusu üzerine gelindiğinde */
@@ -332,6 +334,52 @@ body:has(.response-box:hover) #backgroundVideo video {
     0 0 8px 2px #cac7ff,
     0 0 16px 4px #cac7ff; /* Parlama efekti */
   transform: scale(1.05); /* %5 büyüme */
+}
+
+/* Açılır menü */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px); /* Kullanıcı adı kutusunun 5px altında */
+  right: 0;
+  width: 150px; /* Menü genişliği */
+  background: rgba(255, 255, 255, 0.2); /* Şeffaf arka plan */
+  border-radius: 10px; /* Yuvarlatılmış köşeler */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Gölge */
+  padding: 10px; /* İç boşluk */
+  z-index: 11; /* Üstte */
+  visibility: hidden; /* Varsayılan olarak gizli */
+  opacity: 0; /* Başlangıçta görünmez */
+  transform: translateY(-10px); /* Yukarı kaydır */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Animasyon */
+}
+
+/* Açılır menü aktif olduğunda */
+.dropdown-menu.active {
+  visibility: visible; /* Görünür yap */
+  opacity: 1; /* Tamamen görünür */
+  transform: translateY(0); /* Orijinal konum */
+}
+
+/* Açılır menü öğeleri */
+.dropdown-item {
+  padding: 8px 12px; /* İç boşluk */
+  color: #cac7ff; /* Yazı rengi */
+  font-size: 14px; /* Yazı boyutu */
+  font-weight: bold; /* Kalın yazı */
+  cursor: pointer; /* El imleci */
+  border-radius: 5px; /* Yuvarlatılmış köşeler */
+  transition: background 0.3s ease; /* Arka plan animasyonu */
+  margin-bottom: 5px; /* Öğeler arasına 5px boşluk */
+}
+
+/* Son menü öğesinde margin-bottom kaldırma */
+.dropdown-item:last-child {
+  margin-bottom: 0; /* Son öğede boşluk yok */
+}
+
+/* Açılır menü öğesi üzerine gelindiğinde */
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.3); /* Daha belirgin arka plan */
 }
 
 /* Çıkış yap butonu */

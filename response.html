@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gezi Rehberi Cevabı</title>
+  <title>Cevap - Türkiye Gezi Rehberi</title>
   <link rel="stylesheet" href="responsestyle.css">
+  <script src="response.js" defer></script>
+  <script src="auth.js" defer></script>
 </head>
 <body>
   <div id="backgroundVideo">
@@ -15,50 +17,36 @@
   </div>
 
   <nav class="global-nav">
-    <div class="button-group">
-      <button class="history-button" id="historyToggle">
-        <img src="menu.png" alt="Arama Geçmişi">
-      </button>
-      <button class="home-button" id="backToHome">Ana Sayfa</button>
-    </div>
+    <div class="button-group" id="buttonGroup"></div>
     <div class="search-bar">
       <input type="text" id="cityInput" placeholder="Şehir veya mekan ara...">
-      <button type="submit" id="sorBtn">
+      <button id="sorBtn">
         <img src="search.png" alt="Ara">
       </button>
     </div>
+    <div class="auth-buttons" id="authButtons"></div>
   </nav>
-
-  <div class="auth-buttons">
-    <button class="auth-button signup-button" id="signupBtn">Kayıt Ol</button>
-    <button class="auth-button" id="loginBtn">Giriş Yap</button>
-  </div>
 
   <div class="history-box" id="historyBox">
     <h2>Arama Geçmişi</h2>
     <ul id="searchHistory"></ul>
   </div>
 
-  <div class="container">
-    <div class="response-box">
-      <h2>Cevap</h2>
-      <p id="cevap"></p>
-    </div>
+  <div class="response-box">
+    <h2>Cevap</h2>
+    <p id="cevap"></p>
   </div>
 
   <div class="footer">
-  <h3 class="footer-title">Made by XEROW TEAM</h3>
-  <div class="footer-links">
-    <a href="https://www.instagram.com/yenerr___" class="footer-link">
-      <img src="instagram.png" alt="Instagram"> yenerr___
-    </a>
-    <a href="https://www.instagram.com/kadirwbr" class="footer-link">
-      <img src="instagram.png" alt="Instagram"> kadirwbr
-    </a>
+    <h3 class="footer-title">Made by XEROW TEAM</h3>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/yenerr___" class="footer-link">
+        <img src="instagram.png" alt="Instagram"> yenerr___
+      </a>
+      <a href="https://www.instagram.com/kadirwbr" class="footer-link">
+        <img src="instagram.png" alt="Instagram"> kadirwbr
+      </a>
+    </div>
   </div>
-</div>
-
-
-  <script src="response.js"></script>
 </body>
 </html>
