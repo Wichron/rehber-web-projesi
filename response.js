@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: city }),
+        body: JSON.stringify({ message: '${city} şehri hakkında tarihi, siyasi, kültürel bilgiler ver ve gezilecek yerler öner.' }),
       });
       const data = await response.json();
       cevap.textContent = data.response || "Bilgi bulunamadı.";
