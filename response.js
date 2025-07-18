@@ -1,34 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cityInput = document.getElementById("cityInput");
   const sorBtn = document.getElementById("sorBtn");
-  const cevap = document.getElementById("cevap");
   const searchHistory = document.getElementById("searchHistory");
+  const replyDiv = document.getElementById("aiReply"); // Cevapların gösterileceği yer
+
+  // URL'den gelen cevap parametresini al ve göster
+  const cevapMetni = new URLSearchParams(window.location.search).get("cevap");
+
+  if (cevapMetni && replyDiv) {
+    replyDiv.textContent = decodeURIComponent(cevapMetni);
+  } else if (replyDiv) {
+    replyDiv.textContent = "Yanıt alınamadı veya mesaj iletilmedi.";
+  }
 
   // Elemanların varlığını kontrol et
-  if (!cityInput) console.error("Hata: cityInput elemanı bulunamadı!");
-  if (!sorBtn) console.error("Hata: sorBtn elemanı bulunamadı!");
-  if (!cevap) console.error("Hata: cevap elemanı bulunamadı!");
-  if (!searchHistory) console.error("Hata: searchHistory elemanı bulunamadı!");
+  if (!cityInput) console.warn("Hata: cityInput elemanı bulunamadı!");
+  if (!sorBtn) console.warn("Hata: sorBtn elemanı bulunamadı!");
+  if (!searchHistory) console.warn("Hata: searchHistory elemanı bulunamadı!");
 
-  // Kullanıcıya özgü arama geçmişini yükleme
+  // Kullanıcıya özgü arama geçmişini yükle
   window.loadSearchHistory = () => {
     const username = localStorage.getItem("username");
-    console.log("loadSearchHistory: username =", username);
     if (!username) {
-      console.log("loadSearchHistory: Kullanıcı giriş yapmamış, geçmiş yüklenmiyor.");
       searchHistory.innerHTML = "";
       return;
     }
 
     const historyKey = `searchHistory_${username}`;
-    const history = JSON.parse(localStorage.getItem(historyKey) || "[]") || [];
-    console.log("loadSearchHistory: Geçmiş =", history);
+    const history = JSON.parse(localStorage.getItem(historyKey) || "[]");
     searchHistory.innerHTML = ""; // Önceki geçmişi temizle
+
     history.forEach((item) => {
       const li = document.createElement("li");
       li.textContent = item;
       li.addEventListener("click", () => {
-        console.log("Geçmiş öğesine tıklandı:", item);
         cityInput.value = item;
         searchCity(item);
       });
@@ -36,60 +41,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Arama geçmişine ekleme
+  // Arama geçmişine ekle
   const addToSearchHistory = (city) => {
     const username = localStorage.getItem("username");
-    console.log("addToSearchHistory: username =", username, "city =", city);
-    if (!username) {
-      console.log("addToSearchHistory: Kullanıcı giriş yapmamış, geçmiş kaydedilmiyor.");
-      return;
-    }
-
-    if (!city) {
-      console.log("addToSearchHistory: Şehir boş, kaydedilmedi.");
-      return;
-    }
+    if (!username || !city) return;
 
     const historyKey = `searchHistory_${username}`;
-    let history = JSON.parse(localStorage.getItem(historyKey) || "[]") || [];
+    let history = JSON.parse(localStorage.getItem(historyKey) || "[]");
+
     if (!history.includes(city)) {
-      history.unshift(city); // Yeni aramayı başa ekle
-      if (history.length > 10) history.pop(); // Maksimum 10 kayıt tut
+      history.unshift(city);
+      if (history.length > 10) history.pop();
       localStorage.setItem(historyKey, JSON.stringify(history));
-      console.log("addToSearchHistory: Yeni geçmiş =", history);
-      loadSearchHistory(); // Geçmişi güncelle
+      loadSearchHistory(); // Güncelle
     }
   };
 
-  // Şehir arama fonksiyonu
+  // Şehir arama fonksiyonu (response.html'de doğrudan tekrar arama yapılırsa)
   const searchCity = async (city) => {
-    console.log("searchCity: Arama yapılıyor, şehir =", city);
-    addToSearchHistory(city); // API'den bağımsız olarak geçmişi kaydet
+    replyDiv.textContent = "Yükleniyor...";
+    addToSearchHistory(city);
+
     try {
-      cevap.textContent = "Yükleniyor...";
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: `${city} şehri hakkında tarihi, siyasi, kültürel bilgiler ver ve gezilecek yerler öner.` }),
+        body: JSON.stringify({
+          message: `${city} şehri hakkında tarihi, siyasi, kültürel bilgiler ver ve gezilecek yerler öner.`
+        }),
       });
+
       const data = await response.json();
-      cevap.textContent = data.response || "Bilgi bulunamadı.";
+      replyDiv.textContent = data.response || "Bilgi bulunamadı.";
     } catch (error) {
       console.error("searchCity: Hata:", error);
-      cevap.textContent = "Bir hata oluştu. Lütfen tekrar deneyin.";
+      replyDiv.textContent = "Bir hata oluştu. Lütfen tekrar deneyin.";
     }
   };
 
-  // Arama butonuna olay dinleyicisi
-  if (sorBtn) {
+  // Butonla arama
+  if (sorBtn && cityInput) {
     sorBtn.addEventListener("click", () => {
       const city = cityInput.value.trim();
-      console.log("sorBtn: Tıklandı, şehir =", city);
-      if (city) {
-        searchCity(city);
-      } else {
-        console.log("sorBtn: Şehir boş, arama yapılmadı.");
-      }
+      if (city) searchCity(city);
     });
   }
 
@@ -98,17 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
     cityInput.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
         const city = cityInput.value.trim();
-        console.log("cityInput: Enter tuşuna basıldı, şehir =", city);
-        if (city) {
-          searchCity(city);
-        } else {
-          console.log("cityInput: Şehir boş, arama yapılmadı.");
-        }
+        if (city) searchCity(city);
       }
     });
   }
 
-  // İlk yüklemede geçmişi yükle
-  console.log("response.js: Sayfa yüklendi, loadSearchHistory çağrılıyor.");
+  // Sayfa yüklenince arama geçmişini göster
   window.loadSearchHistory();
 });

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cityInput = document.getElementById("cityInput");
   const sorBtn = document.getElementById("sorBtn");
   const searchHistory = document.getElementById("searchHistory");
+  
 
   if (!cityInput) console.error("cityInput bulunamadı!");
   if (!sorBtn) console.error("sorBtn bulunamadı!");
