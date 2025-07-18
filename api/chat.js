@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "nousresearch/deephermes-3-llama-3-8b-preview:free",
+        model: "microsoft/mai-ds-r1:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
