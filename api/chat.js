@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "google/gemma-3n-e4b-it:free",
+        model: "deepseek/deepseek-r1-distill-llama-70b:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
