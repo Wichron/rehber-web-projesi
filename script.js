@@ -24,24 +24,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
+      // API çağrısı
       const response = await fetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: city }),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: `${city} hakkında kısa tarihi ve kültürel bilgiler ver.`
+        })
       });
 
       const data = await response.json();
-      localStorage.setItem("searchResult", data.response || "Bilgi bulunamadı.");
-      window.location.href = "response.html";
+      console.log("🟢 Sunucudan dönen veri:", data);
+
+      if (data.reply) {
+        // Cevabı URL parametresi olarak kodla ve response.html'ye yönlendir
+        const encodedResponse = encodeURIComponent(data.reply);
+        window.location.href = `response.html?cevap=${encodedResponse}`;
+      } else {
+        // Hata durumunda response.html'ye hata mesajıyla yönlendir
+        const errorMessage = encodeURIComponent(`⚠️ Hata: ${data.error || "Yanıt alınamadı."}`);
+        window.location.href = `response.html?cevap=${errorMessage}`;
+      }
     } catch (error) {
-      console.error("searchCity: Hata:", error);
-      localStorage.setItem("searchResult", "Bir hata oluştu. Lütfen tekrar deneyin.");
-      window.location.href = "response.html";
-    } finally {
-      isSearching = false;
+      console.error("❌ İstek hatası:", error);
+      // Hata durumunda response.html'ye hata mesajıyla yönlendir
+      const errorMessage = encodeURIComponent("🚨 Bir hata oluştu. Sunucuya erişilemedi.");
+      window.location.href = `response.html?cevap=${errorMessage}`;
     }
   };
 
+  
   // Arama geçmişine ekleme (kısaltılmış)
   const addToSearchHistory = (city) => {
     const username = localStorage.getItem("username");
