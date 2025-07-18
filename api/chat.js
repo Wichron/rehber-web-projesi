@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "tencent/hunyuan-a13b-instruct:free",
+        model: "nousresearch/deephermes-3-llama-3-8b-preview:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
