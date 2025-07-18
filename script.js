@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: `${city} şehri hakkında tarihi, siyasi, kültürel bilgiler ver ve gezilecek yerler öner.`
+          message: `${city} Şehri hakkında tarihi, siyasi, kültürel bilgiler ver ve gezilecek yerler öner.`
         })
       });
 
