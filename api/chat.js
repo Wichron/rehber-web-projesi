@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "agentica-org/deepcoder-14b-preview:free",
+        model: "mistralai/mistral-7b-instruct:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
