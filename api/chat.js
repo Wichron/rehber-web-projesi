@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "moonshotai/kimi-k2:free",
+        model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     }
 
     if (data.choices && data.choices[0]) {
-      res.status(200).json({ reply: data.choices[0].message.content });
+      res.status(200).json({ response: data.choices[0].message.content , reply: data.choices[0].message.content});
     } else {
       res.status(500).json({ error: "No reply from model.", apiResponse: data });
     }
