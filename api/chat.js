@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "google/gemini-2.0-flash-exp:free",
+        model: "google/gemma-2-9b-it:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
