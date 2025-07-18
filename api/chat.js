@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+        model: "nousresearch/nous-hermes-2-mixtral:free",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }
