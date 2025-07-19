@@ -421,3 +421,35 @@ input:-webkit-autofill:hover {
   font-size: 20px !important;
   font-family: Arial, sans-serif !important;
 }
+
+/* style.css */
+
+/* Yükleme çubuğu konteyneri */
+.loading-bar {
+  width: 100%;
+  max-width: 700px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+
+/* Yükleme çubuğu ilerleme */
+.loading-progress {
+  width: 0; /* JavaScript ile dinamik olarak güncellenecek */
+  height: 100%;
+  background: #cac7ff;
+  border-radius: 3px;
+  transition: width 0.3s ease; /* Pürüzsüz genişlik değişimi */
+}
+
+/* Yükleme metni */
+.loading-text {
+  color: #cac7ff;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+}
