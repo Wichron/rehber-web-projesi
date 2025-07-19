@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       console.log("🟢 Sunucudan dönen veri:", data);
 
-      console.log("❓ data.reply:", data.reply);
+      console.log("❓ data.reply:", data.response);
 
-      if (data.reply && data.reply.length > 0) {
-        const encodedResponse = encodeURIComponent(data.reply);
+      if (data.response && data.response.length > 0) {
+        const encodedResponse = encodeURIComponent(data.response);
         window.location.href = `response.html?cevap=${encodedResponse}`;
       } else {
         const errorMessage = encodeURIComponent(`⚠️ Hata: ${data.error || "Yanıt alınamadı."}`);
@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Hata durumunda response.html'ye hata mesajıyla yönlendir
       const errorMessage = encodeURIComponent("🚨 Bir hata oluştu. Sunucuya erişilemedi.");
       window.location.href = `response.html?cevap=${errorMessage}`;
+    } finally {
+      isSearching = false; // Hata olsa bile kilidi serbest bırak
     }
   };
 
