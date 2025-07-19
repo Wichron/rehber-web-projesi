@@ -39,15 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       console.log("🟢 Sunucudan dönen veri:", data);
 
-      if (data.reply) {
-        // Cevabı URL parametresi olarak kodla ve response.html'ye yönlendir
+      console.log("❓ data.reply:", data.reply);
+
+      if (data.reply && data.reply.length > 0) {
         const encodedResponse = encodeURIComponent(data.reply);
         window.location.href = `response.html?cevap=${encodedResponse}`;
       } else {
-        // Hata durumunda response.html'ye hata mesajıyla yönlendir
         const errorMessage = encodeURIComponent(`⚠️ Hata: ${data.error || "Yanıt alınamadı."}`);
         window.location.href = `response.html?cevap=${errorMessage}`;
       }
+      
     } catch (error) {
       console.error("❌ İstek hatası:", error);
       // Hata durumunda response.html'ye hata mesajıyla yönlendir
