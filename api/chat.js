@@ -47,7 +47,7 @@ export default async function handler(req, res) {
               { role: "system", content: "You are a helpful assistant." },
               { role: "user", content: message }
             ],
-              stream: stream || false // Akış modunu istemci isteğine göre ayarla
+              stream: false // Akış modunu istemci isteğine göre ayarla
           })
         });
         if (stream) {
