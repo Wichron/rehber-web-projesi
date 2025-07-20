@@ -2,11 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const cityInput = document.getElementById("cityInput");
   const sorBtn = document.getElementById("sorBtn");
   const searchHistory = document.getElementById("searchHistory");
-  
+  const spinner = document.getElementById("spinner");
 
   if (!cityInput) console.error("cityInput bulunamadı!");
   if (!sorBtn) console.error("sorBtn bulunamadı!");
   if (!searchHistory) console.error("searchHistory bulunamadı!");
+
+  function showLoadingBar() {
+    const bar = document.getElementById("loadingBarContainer");
+    if (bar) bar.style.display = "block";
+  }
+
+  function hideLoadingBar() {
+    const bar = document.getElementById("loadingBarContainer");
+    if (bar) bar.style.display = "none";
+  }
 
   // 🔐 Çift tıklama engelleme için kilit
   let isSearching = false;
@@ -20,12 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
     isSearching = true;
     console.log("searchCity: Arama yapılıyor, şehir =", city);
 
+    // 🔄 Spinner ve loading bar göster
+    showLoadingBar();
+    if (spinner) spinner.style.display = "inline-block";
+    cityInput.disabled = true;
+
     if (localStorage.getItem("username")) {
       addToSearchHistory(city);
     }
 
     try {
-      // API çağrısı
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
@@ -39,8 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       console.log("🟢 Sunucudan dönen veri:", data);
 
-      console.log("❓ data.reply:", data.response);
-
       if (data.response && data.response.length > 0) {
         const encodedResponse = encodeURIComponent(data.response);
         window.location.href = `response.html?cevap=${encodedResponse}`;
@@ -48,19 +60,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const errorMessage = encodeURIComponent(`⚠️ Hata: ${data.error || "Yanıt alınamadı."}`);
         window.location.href = `response.html?cevap=${errorMessage}`;
       }
-      
+
     } catch (error) {
       console.error("❌ İstek hatası:", error);
-      // Hata durumunda response.html'ye hata mesajıyla yönlendir
       const errorMessage = encodeURIComponent("🚨 Bir hata oluştu. Sunucuya erişilemedi.");
       window.location.href = `response.html?cevap=${errorMessage}`;
     } finally {
-      isSearching = false; // Hata olsa bile kilidi serbest bırak
+      // 🔄 Spinner ve loading bar gizle
+      if (spinner) spinner.style.display = "none";
+      cityInput.disabled = false;
+      hideLoadingBar();
+      isSearching = false;
     }
   };
 
-  
-  // Arama geçmişine ekleme (kısaltılmış)
   const addToSearchHistory = (city) => {
     const username = localStorage.getItem("username");
     if (!username || !city) return;
@@ -73,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Arama butonuna tıklama
   sorBtn.addEventListener("click", () => {
     const city = cityInput.value.trim();
     if (city) {
@@ -83,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Enter tuşu ile arama
   cityInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       const city = cityInput.value.trim();

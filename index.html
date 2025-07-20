@@ -21,11 +21,15 @@
   <div class="container">
     <h1 class="header">Türkiye Gezi Rehberi</h1>
     <div class="search-bar">
-      <input type="text" id="cityInput" placeholder="Şehir veya mekan ara...">
+      <div class="input-wrapper">
+        <input type="text" id="cityInput" placeholder="Şehir veya mekan ara...">
+        <div id="spinner" class="spinner" style="display: none;"></div>
+      </div>
       <button id="sorBtn">
         <img src="search.png" alt="Ara">
       </button>
     </div>
+    
 
     <div class="info-box">
       <h2>Nasıl Kullanılır?</h2>
@@ -42,5 +46,10 @@
       <img src="instagram.png" alt="Instagram"> kadirwbr
     </a>
   </div>
+  <!-- Loading Bar -->
+<div id="loadingBarContainer">
+  <div id="loadingBar"></div>
+</div>
+
 </body>
 </html>
