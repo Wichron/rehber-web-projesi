@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
       let progress = 0;
       loadingInterval = setInterval(() => {
-        if (progress < 95) {
+        if (progress < 98) {
           progress += Math.random() * 2; // rastgele artış
           loadingBar.style.width = `${progress}%`;
         }
-      }, 100);
+      }, 200);
     }
   }
   
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
       setTimeout(() => {
         bar.style.display = "none";
-      }, 500); // bitişten sonra kısa bir süre sonra gizle
+      }, 500); // bitişten sonra yarım saniye sonra gizle
     }
   }
   // 🔐 Çift tıklama engelleme için kilit

@@ -126,21 +126,19 @@ body:has(.info-box:hover) #backgroundVideo video {
 }
 
 #loadingBarContainer {
-  width: 100%;
-  height: 5px;
-  background-color: #ddd;
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 3px; /* YouTube'da daha ince */
+  background-color: transparent;
   z-index: 9999;
-  display: none;
-  overflow: hidden;
 }
 
 #loadingBar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #ddd, #2c2c2c);
+  background-color: #dadada;
   transition: width 0.2s ease;
 }
 
