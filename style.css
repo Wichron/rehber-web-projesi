@@ -96,10 +96,12 @@ body:has(.info-box:hover) #backgroundVideo video {
   width: 60px; /* Genişlik */
   height: 60px; /* Yükseklik */
   cursor: pointer; /* El imleci */
-  transition: box-shadow 0.3s ease; /* Gölge geçiş animasyonu */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Gölge ve büyüme animasyonu */
   display: flex; /* İçeriği esnek yap */
-  align-items: center; /* Dikeyde ortala */ 
+  align-items: center; /* Dikeyde ortala */
   justify-content: center; /* Yatayda ortala */
+  position: relative; /* Tıklama alanını netleştirmek için */
+  overflow: hidden; /* Taşan içeriği engelle */
 }
 
 /* Arama butonu üzerine gelindiğinde */
@@ -107,13 +109,15 @@ body:has(.info-box:hover) #backgroundVideo video {
   box-shadow: 
     0 0 8px 2px #cac7ff,
     0 0 16px 4px #cac7ff; /* Parlama efekti */
+  transform: scale(1.05); /* %5 büyüme */
 }
 
 /* Arama butonu içindeki ikon */
 .search-bar button img {
-  width: 25px; /* Arama simgesi boyutu */
-  height: 25px; /* Arama simgesi yüksekliği */
-  margin: 0; /* Kenar boşlukları yok */
+  width: 30px; /* İkon boyutunu biraz büyüt */
+  height: 30px; /* İkon boyutunu biraz büyüt */
+  margin: 0; /* Kenar boşluklarını kaldır */
+  pointer-events: none; /* İkonun tıklama olaylarını engelle */
 }
 
 /* Yer tutucu metin rengi */
