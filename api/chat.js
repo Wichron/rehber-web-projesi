@@ -50,41 +50,7 @@ export default async function handler(req, res) {
               stream: false // Akış modunu istemci isteğine göre ayarla
           })
         });
-        if (stream) {
-          // Akış modunda yanıt
-          res.writeHeader("Content-Type", "text/event-stream");
-          res.writeHeader("Cache-Control", "no-cache");
-          res.writeHeader("Connection", "keep-alive");
-
-          const response = await fetch(service.endpoint, {
-            method: "POST",
-            headers,
-            body
-          });
-
-          const reader = response.body.getReader();
-          const decoder = new TextDecoder();
-
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) {
-              res.write("data: [DONE]\n\n");
-              res.end();
-              return;
-            }
-
-            const chunk = decoder.decode(value, { stream: true });
-            res.write(`data: ${chunk}\n\n`);
-            res.flushHeaders(); // Veriyi hemen istemciye gönder
-          }
-        } else {
-          // Normal mod
-          const response = await fetch(service.endpoint, {
-            method: "POST",
-            headers,
-            body
-          });
-
+        
         const data = await response.json();
         console.log(`📡 ${service.name} yanıt:`, JSON.stringify(data, null, 2));
 
@@ -94,7 +60,7 @@ export default async function handler(req, res) {
 
         // 429 veya başka hata: sıradakine geç
         console.warn(`⚠️ ${service.name} başarısız:`, data.error?.message || "Hata");
-        }
+        
 
       } catch (err) {
         console.error(`❌ ${service.name} ile istek başarısız:`, err.message);
