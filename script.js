@@ -8,16 +8,37 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!sorBtn) console.error("sorBtn bulunamadı!");
   if (!searchHistory) console.error("searchHistory bulunamadı!");
 
+  let loadingInterval;
+
   function showLoadingBar() {
     const bar = document.getElementById("loadingBarContainer");
-    if (bar) bar.style.display = "block";
+    const loadingBar = document.getElementById("loadingBar");
+    if (bar && loadingBar) {
+      bar.style.display = "block";
+      loadingBar.style.width = "0%";
+  
+      let progress = 0;
+      loadingInterval = setInterval(() => {
+        if (progress < 95) {
+          progress += Math.random() * 2; // rastgele artış
+          loadingBar.style.width = `${progress}%`;
+        }
+      }, 100);
+    }
   }
-
+  
   function hideLoadingBar() {
     const bar = document.getElementById("loadingBarContainer");
-    if (bar) bar.style.display = "none";
+    const loadingBar = document.getElementById("loadingBar");
+    if (bar && loadingBar) {
+      clearInterval(loadingInterval);
+      loadingBar.style.width = "100%";
+  
+      setTimeout(() => {
+        bar.style.display = "none";
+      }, 500); // bitişten sonra kısa bir süre sonra gizle
+    }
   }
-
   // 🔐 Çift tıklama engelleme için kilit
   let isSearching = false;
 

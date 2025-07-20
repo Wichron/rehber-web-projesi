@@ -134,25 +134,14 @@ body:has(.info-box:hover) #backgroundVideo video {
   left: 0;
   z-index: 9999;
   display: none;
+  overflow: hidden;
 }
 
 #loadingBar {
   height: 100%;
-  width: 20%; /* Genişlik sabit olsun */
-  background: linear-gradient(90deg, #cacaca, #2c2c2c);
-  animation: loadingSlide 1.5s linear infinite;
-  position: absolute;
-  left: 0;
-}
-
-
-@keyframes loadingSlide {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  width: 0%;
+  background: linear-gradient(90deg, #ddd, #2c2c2c);
+  transition: width 0.2s ease;
 }
 
 /* loading-spinner */
